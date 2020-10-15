@@ -9,9 +9,9 @@ import (
 	"github.com/amaurymartiny/step2/x/step2/types"
 )
 
-func listNameHandler(clientCtx client.Context) http.HandlerFunc {
+func listCommentHandler(clientCtx client.Context) http.HandlerFunc {
 	return func(w http.ResponseWriter, r *http.Request) {
-		res, height, err := clientCtx.QueryWithData(fmt.Sprintf("custom/%s/list-name", types.QuerierRoute), nil)
+		res, height, err := clientCtx.QueryWithData(fmt.Sprintf("custom/%s/list-comment", types.QuerierRoute), nil)
 		if err != nil {
 			rest.WriteErrorResponse(w, http.StatusNotFound, err.Error())
 			return

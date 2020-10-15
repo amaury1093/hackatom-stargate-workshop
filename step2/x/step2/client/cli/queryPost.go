@@ -9,10 +9,10 @@ import (
     "github.com/amaurymartiny/step2/x/step2/types"
 )
 
-func CmdListName() *cobra.Command {
+func CmdListPost() *cobra.Command {
 	cmd := &cobra.Command{
-		Use:   "list-name",
-		Short: "list all name",
+		Use:   "list-post",
+		Short: "list all post",
 		RunE: func(cmd *cobra.Command, args []string) error {
             clientCtx := client.GetClientContextFromCmd(cmd)
             clientCtx, err := client.ReadQueryCommandFlags(clientCtx, cmd.Flags())
@@ -27,11 +27,11 @@ func CmdListName() *cobra.Command {
 
             queryClient := types.NewQueryClient(clientCtx)
 
-            params := &types.QueryAllNameRequest{
+            params := &types.QueryAllPostRequest{
                 Pagination: pageReq,
             }
 
-            res, err := queryClient.AllName(context.Background(), params)
+            res, err := queryClient.AllPost(context.Background(), params)
             if err != nil {
                 return err
             }
