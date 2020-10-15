@@ -1,5 +1,5 @@
 syntax = "proto3";
-package step2.step2.v1beta1;
+package blog.step2.v1beta1;
 
 option go_package = "github.com/amaurymartiny/step2/x/step2/types";
 

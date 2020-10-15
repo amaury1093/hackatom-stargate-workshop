@@ -10,17 +10,17 @@ import (
 	"github.com/amaurymartiny/step2/x/step2/types"
 )
 
-type createNameRequest struct {
+type createPostRequest struct {
 	BaseReq rest.BaseReq `json:"base_req"`
 	Creator string `json:"creator"`
-	Value string `json:"value"`
-	Price string `json:"price"`
+	Title string `json:"title"`
+	Body string `json:"body"`
 	
 }
 
-func createNameHandler(clientCtx client.Context) http.HandlerFunc {
+func createPostHandler(clientCtx client.Context) http.HandlerFunc {
 	return func(w http.ResponseWriter, r *http.Request) {
-		var req createNameRequest
+		var req createPostRequest
 		if !rest.ReadRESTReq(w, r, clientCtx.LegacyAmino, &req) {
 			rest.WriteErrorResponse(w, http.StatusBadRequest, "failed to parse request")
 			return
@@ -37,7 +37,7 @@ func createNameHandler(clientCtx client.Context) http.HandlerFunc {
 			return
 		}
 
-		msg := types.NewMsgName(creator,  req.Value,  req.Price, )
+		msg := types.NewMsgPost(creator,  req.Title,  req.Body, )
 		tx.WriteGeneratedTxResponse(clientCtx, w, req.BaseReq, msg)
 	}
 }

@@ -1,3 +1,9 @@
 package types
 
-const (QueryListName = "list-name")
+const (
+	QueryListPost = "list-post"
+)
+
+const (
+	QueryListComment = "list-comment"
+)
