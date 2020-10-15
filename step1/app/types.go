@@ -10,7 +10,7 @@ import (
 
 // App implements the common methods for a Cosmos SDK-based application
 // specific blockchain.
-type CosmosApp interface {
+type App interface {
 	// The assigned name of the app.
 	Name() string
 
@@ -38,4 +38,3 @@ type CosmosApp interface {
 	// All the registered module account addreses.
 	ModuleAccountAddrs() map[string]bool
 }
-

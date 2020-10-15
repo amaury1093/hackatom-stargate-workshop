@@ -1,11 +1,11 @@
-package step1
+package blog
 
 import (
 	"fmt"
 
+	"github.com/amaurymartiny/step1/x/blog/keeper"
+	"github.com/amaurymartiny/step1/x/blog/types"
 	sdk "github.com/cosmos/cosmos-sdk/types"
-	"github.com/amaurymartiny/step1/x/step1/keeper"
-	"github.com/amaurymartiny/step1/x/step1/types"
 	sdkerrors "github.com/cosmos/cosmos-sdk/types/errors"
 )
 
@@ -15,7 +15,7 @@ func NewHandler(k keeper.Keeper) sdk.Handler {
 		ctx = ctx.WithEventManager(sdk.NewEventManager())
 
 		switch msg := msg.(type) {
-        // this line is used by starport scaffolding # 1
+		// this line is used by starport scaffolding # 1
 		default:
 			errMsg := fmt.Sprintf("unrecognized %s message type: %T", types.ModuleName, msg)
 			return nil, sdkerrors.Wrap(sdkerrors.ErrUnknownRequest, errMsg)

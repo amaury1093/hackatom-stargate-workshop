@@ -1,4 +1,4 @@
-package step1
+package blog
 
 import (
 	"encoding/json"
@@ -11,15 +11,15 @@ import (
 
 	abci "github.com/tendermint/tendermint/abci/types"
 
+	"github.com/amaurymartiny/step1/x/blog/client/cli"
+	"github.com/amaurymartiny/step1/x/blog/client/rest"
+	"github.com/amaurymartiny/step1/x/blog/keeper"
+	"github.com/amaurymartiny/step1/x/blog/types"
 	"github.com/cosmos/cosmos-sdk/client"
 	"github.com/cosmos/cosmos-sdk/codec"
 	cdctypes "github.com/cosmos/cosmos-sdk/codec/types"
 	sdk "github.com/cosmos/cosmos-sdk/types"
 	"github.com/cosmos/cosmos-sdk/types/module"
-	"github.com/amaurymartiny/step1/x/step1/keeper"
-	"github.com/amaurymartiny/step1/x/step1/types"
-	"github.com/amaurymartiny/step1/x/step1/client/cli"
-	"github.com/amaurymartiny/step1/x/step1/client/rest"
 )
 
 var (
@@ -83,12 +83,12 @@ func (a AppModuleBasic) RegisterGRPCRoutes(_ client.Context, _ *runtime.ServeMux
 
 // GetTxCmd returns the capability module's root tx command.
 func (a AppModuleBasic) GetTxCmd() *cobra.Command {
-    return cli.GetTxCmd()
+	return cli.GetTxCmd()
 }
 
 // GetQueryCmd returns the capability module's root query command.
 func (AppModuleBasic) GetQueryCmd() *cobra.Command {
-    return cli.GetQueryCmd(types.StoreKey)
+	return cli.GetQueryCmd(types.StoreKey)
 }
 
 // ----------------------------------------------------------------------------

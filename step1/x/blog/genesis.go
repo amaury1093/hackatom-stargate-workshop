@@ -1,9 +1,9 @@
-package step1
+package blog
 
 import (
+	"github.com/amaurymartiny/step1/x/blog/keeper"
+	"github.com/amaurymartiny/step1/x/blog/types"
 	sdk "github.com/cosmos/cosmos-sdk/types"
-	"github.com/amaurymartiny/step1/x/step1/keeper"
-	"github.com/amaurymartiny/step1/x/step1/types"
 )
 
 // InitGenesis initializes the capability module's state from a provided genesis

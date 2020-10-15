@@ -1,3 +1,3 @@
 package cmd
 
-const appName = "step1"
+const appName = "blogapp"
