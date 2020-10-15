@@ -6,7 +6,7 @@ The accompanying slides can be found [here](TODO). If you didn't attend the work
 
 The workshop is divided into 3 steps:
 
-- Step 1: Create a blank blockchain using the [`starport`](https://github.com/tendermint/starport) scaffolding tool.
+- Step 1: Setup a blockchain boilerplate.
 - Step 2: Create your own `x/blog` module.
 - Step 3: Run the node, and interact with your module.
 
