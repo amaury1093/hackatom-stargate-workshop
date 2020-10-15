@@ -4,5 +4,6 @@
 - cd step1
 - rm -rf .git .gitignore
 - go get github.com/cosmos/cosmos-sdk@v0.40.0-rc0
-- Remove references to modules we won't use
+- Remove references to modules we won't use in app.go
+- Remove client/rest
 - starport build
