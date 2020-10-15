@@ -3,6 +3,7 @@ package step2.step2.v1beta1;
 
 import "cosmos/base/query/v1beta1/pagination.proto";
 // this line is used by starport scaffolding # 1
+import "step2/v1beta/name.proto";
 
 
 option go_package = "github.com/amaurymartiny/step2/x/step2/types";
@@ -10,6 +11,15 @@ option go_package = "github.com/amaurymartiny/step2/x/step2/types";
 // Query defines the gRPC querier service.
 service Query {
     // this line is used by starport scaffolding # 2
+	rpc AllName(QueryAllNameRequest) returns (QueryAllNameResponse);
 }
 
 // this line is used by starport scaffolding # 3
+message QueryAllNameRequest {
+	cosmos.base.query.v1beta1.PageRequest pagination = 1;
+}
+
+message QueryAllNameResponse {
+	repeated MsgName name = 1;
+	cosmos.base.query.v1beta1.PageResponse pagination = 2;
+}

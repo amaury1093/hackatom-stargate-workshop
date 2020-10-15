@@ -8,5 +8,5 @@ import (
 
 // x/step2 module sentinel errors
 var (
-	ErrSample = sdkerrors.Register(ModuleName, 1100, "sample error")
+	ErrNameDoesNotExist = sdkerrors.Register(ModuleName, 1000, "name does not exist")
 )
