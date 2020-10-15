@@ -36,11 +36,11 @@ go get github.com/cosmos/cosmos-sdk@v0.40.0-rc0
 starport build
 ```
 
-At the end of this step, you should have a folder structure similar to the `step1/` folder.
+At the end of this step, you should have a folder content similar to the `step1/` folder.
 
 > Note: For the sake of this tutorial, the app in the `step1/` folder has been renamed ~`blog`~ -> `step1`
 
-## Step 2
+## Step 2: Create your own `x/blog` module.
 
 ```bash
 # Add a new "post" type to your x/blog module, with fields "title" and "body"
@@ -50,7 +50,12 @@ starport type comment postID body
 
 # Clean up the proto files. Starport currently outputs the proto files inside `proto/blog/v1beta`, it should be renamed to `v1beta1`.
 
+# Generate the go files for these proto definitions.
+./scripts/ protocgen
+
 # Add some basic validation of the Msgs, inside `x/blog/types/MsgCreate{Post,Comment}`.
 ```
+
+At the end of this step, you should have a folder content similar to the `step2/` folder.
 
 > Note: For the sake of this tutorial, the app in the `step2/` folder has been renamed ~`blog`~ -> `step2`
