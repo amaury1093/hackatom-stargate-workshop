@@ -2,7 +2,7 @@ package types
 
 const (
 	// ModuleName defines the module name
-	ModuleName = "step2"
+	ModuleName = "blog"
 
 	// StoreKey defines the primary module store key
 	StoreKey = ModuleName
@@ -14,17 +14,9 @@ const (
 	QuerierRoute = ModuleName
 
 	// MemStoreKey defines the in-memory store key
-	MemStoreKey = "mem_step2"
+	MemStoreKey = "mem_capability"
 )
 
 func KeyPrefix(p string) []byte {
 	return []byte(p)
 }
-
-const (
-	PostKey = "Post"
-)
-
-const (
-	CommentKey = "Comment"
-)

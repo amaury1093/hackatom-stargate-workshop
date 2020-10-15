@@ -10,12 +10,12 @@ import (
 	// "github.com/cosmos/cosmos-sdk/client/flags"
 	// sdk "github.com/cosmos/cosmos-sdk/types"
 
-	"github.com/amaurymartiny/step2/x/step2/types"
+	"github.com/amaurymartiny/step2/x/blog/types"
 )
 
 // GetQueryCmd returns the cli query commands for this module
 func GetQueryCmd(queryRoute string) *cobra.Command {
-	// Group step2 queries under a subcommand
+	// Group glob queries under a subcommand
 	cmd := &cobra.Command{
 		Use:                        types.ModuleName,
 		Short:                      fmt.Sprintf("Querying commands for the %s module", types.ModuleName),
@@ -25,10 +25,6 @@ func GetQueryCmd(queryRoute string) *cobra.Command {
 	}
 
 	// this line is used by starport scaffolding # 1
-
-	cmd.AddCommand(CmdListComment())
-
-	cmd.AddCommand(CmdListPost())
 
 	return cmd
 }

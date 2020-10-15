@@ -1,8 +1,8 @@
-package step2
+package blog
 
 import (
-	"github.com/amaurymartiny/step2/x/step2/keeper"
-	"github.com/amaurymartiny/step2/x/step2/types"
+	"github.com/amaurymartiny/step2/x/blog/keeper"
+	"github.com/amaurymartiny/step2/x/blog/types"
 	sdk "github.com/cosmos/cosmos-sdk/types"
 )
 

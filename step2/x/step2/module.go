@@ -1,4 +1,4 @@
-package step2
+package blog
 
 import (
 	"encoding/json"
@@ -11,10 +11,10 @@ import (
 
 	abci "github.com/tendermint/tendermint/abci/types"
 
-	"github.com/amaurymartiny/step2/x/step2/client/cli"
-	"github.com/amaurymartiny/step2/x/step2/client/rest"
-	"github.com/amaurymartiny/step2/x/step2/keeper"
-	"github.com/amaurymartiny/step2/x/step2/types"
+	"github.com/amaurymartiny/step2/x/blog/client/cli"
+	"github.com/amaurymartiny/step2/x/blog/client/rest"
+	"github.com/amaurymartiny/step2/x/blog/keeper"
+	"github.com/amaurymartiny/step2/x/blog/types"
 	"github.com/cosmos/cosmos-sdk/client"
 	"github.com/cosmos/cosmos-sdk/codec"
 	cdctypes "github.com/cosmos/cosmos-sdk/codec/types"

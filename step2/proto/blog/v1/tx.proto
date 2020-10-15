@@ -1,7 +1,7 @@
 syntax = "proto3";
-package blog.step2.v1beta1;
+package blog.v1;
 
-option go_package = "github.com/amaurymartiny/step2/x/step2/types";
+option go_package = "github.com/amaurymartiny/step2/x/blog/types";
 
 import "gogoproto/gogo.proto";
 

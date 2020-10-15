@@ -1,7 +1,7 @@
 package keeper
 
 import (
-	"github.com/amaurymartiny/step2/x/step2/types"
+	"github.com/amaurymartiny/step2/x/blog/types"
 )
 
 var _ types.QueryServer = Keeper{}

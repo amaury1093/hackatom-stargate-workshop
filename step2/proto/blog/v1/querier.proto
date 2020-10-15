@@ -1,12 +1,12 @@
 syntax = "proto3";
-package blog.step2.v1beta1;
+package blog.v1;
 
 import "cosmos/base/query/v1beta1/pagination.proto";
 // this line is used by starport scaffolding # 1
-import "step2/v1beta1/tx.proto";
+import "blog/v1/tx.proto";
 
 
-option go_package = "github.com/amaurymartiny/step2/x/step2/types";
+option go_package = "github.com/amaurymartiny/step2/x/blog/types";
 
 // Query defines the gRPC querier service.
 service Query {

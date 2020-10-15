@@ -6,7 +6,7 @@ import (
 	sdkerrors "github.com/cosmos/cosmos-sdk/types/errors"
 )
 
-// x/step2 module sentinel errors
+// x/blog module sentinel errors
 var (
-	ErrNameDoesNotExist = sdkerrors.Register(ModuleName, 1000, "name does not exist")
+	ErrSample = sdkerrors.Register(ModuleName, 1100, "sample error")
 )

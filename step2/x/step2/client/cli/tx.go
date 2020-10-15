@@ -7,7 +7,7 @@ import (
 
 	"github.com/cosmos/cosmos-sdk/client"
 	// "github.com/cosmos/cosmos-sdk/client/flags"
-	"github.com/amaurymartiny/step2/x/step2/types"
+	"github.com/amaurymartiny/step2/x/blog/types"
 )
 
 // GetTxCmd returns the transaction commands for this module
@@ -21,10 +21,6 @@ func GetTxCmd() *cobra.Command {
 	}
 
 	// this line is used by starport scaffolding # 1
-
-	cmd.AddCommand(CmdCreateComment())
-
-	cmd.AddCommand(CmdCreatePost())
 
 	return cmd
 }
