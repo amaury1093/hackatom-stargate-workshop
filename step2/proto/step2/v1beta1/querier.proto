@@ -3,7 +3,7 @@ package blog.step2.v1beta1;
 
 import "cosmos/base/query/v1beta1/pagination.proto";
 // this line is used by starport scaffolding # 1
-import "step2/v1beta1/blog.proto";
+import "step2/v1beta1/tx.proto";
 
 
 option go_package = "github.com/amaurymartiny/step2/x/step2/types";
@@ -21,7 +21,7 @@ message QueryAllCommentRequest {
 }
 
 message QueryAllCommentResponse {
-	repeated Comment comment = 1;
+	repeated MsgComment comment = 1;
 	cosmos.base.query.v1beta1.PageResponse pagination = 2;
 }
 message QueryAllPostRequest {
@@ -29,6 +29,6 @@ message QueryAllPostRequest {
 }
 
 message QueryAllPostResponse {
-	repeated Post post = 1;
+	repeated MsgPost post = 1;
 	cosmos.base.query.v1beta1.PageResponse pagination = 2;
 }

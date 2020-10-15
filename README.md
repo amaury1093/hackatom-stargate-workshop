@@ -47,6 +47,10 @@ At the end of this step, you should have a folder structure similar to the `step
 starport type post title body
 # Add a new "comment" type to your x/blog module, with fields "postID" and "body"
 starport type comment postID body
+
+# Clean up the proto files. Starport currently outputs the proto files inside `proto/blog/v1beta`, it should be renamed to `v1beta1`.
+
+# Add some basic validation of the Msgs, inside `x/blog/types/MsgCreate{Post,Comment}`.
 ```
 
 > Note: For the sake of this tutorial, the app in the `step2/` folder has been renamed ~`blog`~ -> `step2`
