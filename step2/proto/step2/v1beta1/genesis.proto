@@ -1,9 +1,0 @@
-syntax = "proto3";
-package blog.step2.v1beta1;
-
-option go_package = "github.com/amaurymartiny/step2/x/step2/types";
-
-// GenesisState defines the capability module's genesis state.
-message GenesisState {
-}
-
