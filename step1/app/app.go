@@ -72,6 +72,9 @@ import (
 	upgradetypes "github.com/cosmos/cosmos-sdk/x/upgrade/types"
 
 	blogparams "github.com/amaurymartiny/step1/app/params"
+	"github.com/amaurymartiny/step1/x/blog"
+	blogkeeper "github.com/amaurymartiny/step1/x/blog/keeper"
+	blogtypes "github.com/amaurymartiny/step1/x/blog/types"
 
 	// unnamed import of statik for swagger UI support
 	_ "github.com/cosmos/cosmos-sdk/client/docs/statik"
@@ -102,6 +105,8 @@ var (
 		slashing.AppModuleBasic{},
 		upgrade.AppModuleBasic{},
 		evidence.AppModuleBasic{},
+
+		blog.AppModuleBasic{},
 	)
 
 	// module account permissions
@@ -152,6 +157,8 @@ type BlogApp struct {
 	ParamsKeeper     paramskeeper.Keeper
 	EvidenceKeeper   evidencekeeper.Keeper
 
+	BlogKeeper blogkeeper.Keeper
+
 	// the module manager
 	mm *module.Manager
 
@@ -165,7 +172,7 @@ func init() {
 		panic(err)
 	}
 
-	DefaultNodeHome = filepath.Join(userHomeDir, ".BlogApp")
+	DefaultNodeHome = filepath.Join(userHomeDir, ".blogapp")
 }
 
 // NewBlogApp returns a reference to an initialized BlogApp.
@@ -173,7 +180,6 @@ func NewBlogApp(
 	logger log.Logger, db dbm.DB, traceStore io.Writer, loadLatest bool, skipUpgradeHeights map[int64]bool,
 	homePath string, invCheckPeriod uint, encodingConfig blogparams.EncodingConfig, baseAppOptions ...func(*baseapp.BaseApp),
 ) *BlogApp {
-
 	// TODO: Remove cdc in favor of appCodec once all modules are migrated.
 	appCodec := encodingConfig.Marshaler
 	legacyAmino := encodingConfig.Amino
@@ -189,10 +195,10 @@ func NewBlogApp(
 		authtypes.StoreKey, banktypes.StoreKey, stakingtypes.StoreKey,
 		minttypes.StoreKey, distrtypes.StoreKey, slashingtypes.StoreKey,
 		govtypes.StoreKey, paramstypes.StoreKey, upgradetypes.StoreKey,
-		evidencetypes.StoreKey, capabilitytypes.StoreKey,
+		evidencetypes.StoreKey, capabilitytypes.StoreKey, blogtypes.StoreKey,
 	)
 	tkeys := sdk.NewTransientStoreKeys(paramstypes.TStoreKey)
-	memKeys := sdk.NewMemoryStoreKeys(capabilitytypes.MemStoreKey)
+	memKeys := sdk.NewMemoryStoreKeys(capabilitytypes.MemStoreKey, blogtypes.MemStoreKey)
 
 	app := &BlogApp{
 		BaseApp:           bApp,
@@ -263,6 +269,8 @@ func NewBlogApp(
 	// If evidence needs to be handled for the app, set routes in router here and seal
 	app.EvidenceKeeper = *evidenceKeeper
 
+	app.BlogKeeper = *blogkeeper.NewKeeper(app.appCodec, keys[blogtypes.StoreKey], memKeys[blogtypes.MemStoreKey])
+
 	// NOTE: Any module instantiated in the module manager that is later modified
 	// must be passed by reference here.
 	app.mm = module.NewManager(
@@ -282,6 +290,7 @@ func NewBlogApp(
 		upgrade.NewAppModule(app.UpgradeKeeper),
 		evidence.NewAppModule(app.EvidenceKeeper),
 		params.NewAppModule(app.ParamsKeeper),
+		blog.NewAppModule(appCodec, app.BlogKeeper),
 	)
 
 	// During begin block slashing happens after distr.BeginBlocker so that
