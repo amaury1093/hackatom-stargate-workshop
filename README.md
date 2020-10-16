@@ -16,10 +16,6 @@ The workshop is divided into 3 steps:
 
 - [`golang`](https://golang.org/doc/install) >1.15.0 installed
 
-```bash
-git clone https://github.com/tendermint/starport && cd starport && make
-```
-
 ## Step 1: Setup the blockchain boilerplate.
 
 This first step is to get the boilerplate of creating a blockchain sorted out.
@@ -27,17 +23,28 @@ This first step is to get the boilerplate of creating a blockchain sorted out.
 ```bash
 # Fetch this repository.
 git clone https://github.com/amaurymartiny/hackatom-stargate-workshop
-cd hackatom-stargate-workshop/step1
+cd hackatom-stargate-workshop
+
+# Copy the `step1` directory to your own. Let's call it `blog`.
+cp -r step1 blog
+cd blog
+
+# Rename every instance of `step1` to `blog`.
+mv cmd/step1d cmd/blogd
+# Replace in all files
+# macos
+grep -rli 'step1' * | xargs -I@ sed -i '' 's/step1/blog/g' @
+# linux
+grep -rli 'old-word' * | xargs -i@ sed -i 's/old-word/new-word/g' @
+# Or you can do a search & replace in your favorite editor.
 
 # Build the binary inside a `build/` directory.
 mkdir build
 go build -o ./build ./...
 
-# You should see a `step1d` binary in the `build/` folder.
+# You should see a `blogd` binary in the `build/` folder.
 ls ./build
 ```
-
-> Note: For the sake of this tutorial, the app in the `step1/` folder has been renamed ~`blog`~ -> `step1`
 
 ## Step 2: Create your own `x/blog` module.
 
@@ -67,28 +74,28 @@ go build -o ./build ./...
 
 # Initialize configuration files and genesis file
 # moniker is the name of your node
-step2d init amaury --chain-id blogchain
+blogd init amaury --chain-id blogchain
 
 # Copy the `Address` output here and save it for later use
 # [optional] add "--ledger" at the end to use a Ledger Nano S
-step2d keys add amaury --keyring-backend test
+blogd keys add amaury --keyring-backend test
 
 # Copy the `Address` output here and save it for later use
-step2d keys add alice  --keyring-backend test
+blogd keys add alice  --keyring-backend test
 
 # Add both accounts, with coins to the genesis file
-step2d add-genesis-account $(step2d keys show amaury -a --keyring-backend test) 1000token,100000000stake
-step2d add-genesis-account $(step2d keys show alice -a --keyring-backend test) 1000token,100000000stake
+blogd add-genesis-account $(blogd keys show amaury -a --keyring-backend test) 1000token,100000000stake
+blogd add-genesis-account $(blogd keys show alice -a --keyring-backend test) 1000token,100000000stake
 
 # Generate the gentx
-step2d gentx amaury --keyring-backend test --chain-id blogchain
+blogd gentx amaury --keyring-backend test --chain-id blogchain
 
 # After you have generated a genesis transaction, you will have to input the genTx into the genesis file, so that your blog chain is aware of the validators. To do so, run:
-step2d collect-gentxs
+blogd collect-gentxs
 
 # Make sure your genesis file is correct.
-step2d validate-genesis
+blogd validate-genesis
 
 # You can now start nsd by calling nsd start. You will see logs begin streaming that represent blocks being produced, this will take a couple of seconds.
-step2d start
+blogd start
 ```
