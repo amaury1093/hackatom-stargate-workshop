@@ -35,7 +35,7 @@ mv cmd/step1d cmd/blogd
 # macos
 grep -rli 'step1' * | xargs -I@ sed -i '' 's/step1/blog/g' @
 # linux
-grep -rli 'old-word' * | xargs -i@ sed -i 's/old-word/new-word/g' @
+grep -rli 'step1' * | xargs -i@ sed -i 's/step1/blog/g' @
 # Or you can do a search & replace in your favorite editor.
 
 # Build the binary inside a `build/` directory.
